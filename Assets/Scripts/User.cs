@@ -1,7 +1,7 @@
 
 using Unity.VisualScripting;
 using UnityEngine;
-
+//this is a script for the user
 public class User : MonoBehaviour
 {
 
