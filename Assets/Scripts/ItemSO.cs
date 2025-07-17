@@ -5,6 +5,7 @@ public class ItemSO : ScriptableObject
     public string itemName;
     public StatToChange statToChange;
     public int amountToChageStat;
+    public GameObject worldPrefab; 
 
     public void UseItem()
     {
@@ -20,7 +21,7 @@ public class ItemSO : ScriptableObject
         {
             //update xp
         }
-        
+
     }
     public enum StatToChange
     {

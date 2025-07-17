@@ -8,6 +8,7 @@ public class Item : MonoBehaviour
     public Sprite sprite;
     public InventoryManager inventoryManager;
     public string itemDescription;
+    public ItemSO itemSO;
     void Start()
     {
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();

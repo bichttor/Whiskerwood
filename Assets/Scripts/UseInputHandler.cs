@@ -59,7 +59,7 @@ public class UseInputHandler : MonoBehaviour
             {
 
                 Item item = raycastHit.transform.gameObject.GetComponent<Item>();
-                inventoryManager.AddItem(item.name, item.quantity, item.sprite, item.itemDescription);
+                inventoryManager.AddItem(item.name, item.quantity, item.sprite, item.itemDescription,item.itemSO);
 
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public GameObject InventoryMenu;
-
+    
     public bool menuOn;
     public ItemSlot[] itemSlot;
     public ItemSO[] itemSOs;
@@ -46,23 +46,21 @@ public class InventoryManager : MonoBehaviour
             if (itemSOs[i].itemName == name)
             {
                 itemSOs[i].UseItem();
+                
             }
         }
+        
     }
-    public void AddItem(string name, int quantity, Sprite sprite, String description)
+    public void AddItem(string name, int quantity, Sprite sprite, String description,ItemSO itemSO)
     {
-        Debug.Log("starting loop");
+       
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            Debug.Log("loop" + i);
+            
             if (itemSlot[i].isFull == false)
             {
-                itemSlot[i].addItem(name, quantity, sprite, description);
+                itemSlot[i].addItem(name, quantity, sprite, description,itemSO);
                 return;
-            }
-            else
-            {
-                Debug.Log("is full" + i);
             }
         }
     }
