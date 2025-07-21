@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public float health, damage, experience;
+    public int bottlecaps;
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask groundMask, playerMask;
@@ -38,6 +39,10 @@ public class Enemy : MonoBehaviour
         {
             Attacking();
         }
+    }
+    public void setBottleCaps()
+    {
+        bottlecaps = (int)Random.Range(damage, health);
     }
     public void Patroling()
     {
@@ -99,6 +104,7 @@ public class Enemy : MonoBehaviour
     {
         //logic for dying 
         player.GetComponent<PlayerStats>().AddExperience(experience);
+        player.GetComponent<PlayerStats>().AddBottleCaps(bottlecaps);
         Destroy(gameObject);
 
     }

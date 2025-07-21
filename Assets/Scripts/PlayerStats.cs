@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
     public float chargeRate = 30;
     public AudioSource takedamgeSFX;
     public AudioSource LevelUpSFX;
-
+    public int BottleCaps;
     public void PlayTakeDamage() => takedamgeSFX.Play();
     public void PlayLevelUp() => LevelUpSFX.Play();
     void Start()
@@ -106,6 +106,10 @@ public class PlayerStats : MonoBehaviour
         CheckForLevelUp();
         experienceBar.SetSlider(currentExperience);
     }
+    public void AddBottleCaps(int amount)
+    {
+        BottleCaps += amount;
+    }
 
     public void CheckForLevelUp()
     {
@@ -114,7 +118,7 @@ public class PlayerStats : MonoBehaviour
             currentLevel++;
             UpdateLevel();
             PlayLevelUp();
-            
+
         }
     }
 

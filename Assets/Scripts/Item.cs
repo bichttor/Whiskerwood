@@ -1,17 +1,18 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, IInteractable
 {
-    public string itemName, itemDiscription;
-    public int quantity;
-    public Sprite sprite;
     public InventoryManager inventoryManager;
-    public string itemDescription;
     public ItemSO itemSO;
+    public int quantity;
     void Start()
     {
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
     }
-    
+     public void Interact()
+    {
+        inventoryManager.AddItem(itemSO, quantity); 
+        Destroy(gameObject);
+    }
 }

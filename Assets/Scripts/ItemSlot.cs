@@ -20,19 +20,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
     public void Start()
     {
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
-        playerTransform = GameObject.FindGameObjectWithTag("User")?.transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
-    public void addItem(string name, int quantity, Sprite sprite, String description, ItemSO itemSO)
+    public void AddItem(ItemSO itemSO, int quantity)
     {
-        this.itemName = name;
-        this.itemQuantity = quantity;
-        this.itemSprite = sprite;
-        this.itemDescription = description;
         this.itemSO = itemSO;
+        this.itemQuantity = quantity;
+        this.itemSprite = itemSO.sprite;
+        this.itemName = itemSO.itemName;
+        this.itemDescription = itemSO.itemDescription;
         isFull = true;
         quantityText.text = quantity.ToString();
-        quantityText.enabled = itemSprite;
-        itemImage.sprite = sprite;
+        quantityText.enabled = true;
+        itemImage.sprite =  itemSprite;
         itemImage.enabled = true;
     }
 
@@ -76,10 +76,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler
         GameObject dropped = Instantiate(itemSO.worldPrefab, dropPosition, Quaternion.identity);
         Item newItem = dropped.GetComponent<Item>();
         newItem.itemSO = itemSO;
-        newItem.quantity = 1;
-        newItem.itemName = itemName;
-        newItem.itemDescription = itemDescription;
-        newItem.sprite = itemSprite;
+        newItem.quantity = 1; 
         
         newItem.transform.SetParent(null);
         if (newItem.TryGetComponent<Rigidbody>(out var rb))

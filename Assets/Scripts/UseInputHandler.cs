@@ -58,8 +58,11 @@ public class UseInputHandler : MonoBehaviour
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, 2f, layerMask))
             {
 
-                Item item = raycastHit.transform.gameObject.GetComponent<Item>();
-                inventoryManager.AddItem(item.name, item.quantity, item.sprite, item.itemDescription,item.itemSO);
+                IInteractable interactable = raycastHit.transform.GetComponent<IInteractable>();
+                if (interactable != null)
+                {
+                    interactable.Interact();
+                }
 
             }
         }

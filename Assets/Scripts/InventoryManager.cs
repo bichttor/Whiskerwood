@@ -51,19 +51,17 @@ public class InventoryManager : MonoBehaviour
         }
         
     }
-    public void AddItem(string name, int quantity, Sprite sprite, String description,ItemSO itemSO)
+    public void AddItem(ItemSO itemSO, int quantity)
     {
-       
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            
-            if (itemSlot[i].isFull == false)
+            if (!itemSlot[i].isFull)
             {
-                itemSlot[i].addItem(name, quantity, sprite, description,itemSO);
+                itemSlot[i].AddItem(itemSO, quantity);
                 return;
             }
         }
-    }
+    }       
 
     public void DeselectAllSlots()
     {

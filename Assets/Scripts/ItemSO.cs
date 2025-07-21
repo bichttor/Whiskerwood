@@ -2,10 +2,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ItemSO : ScriptableObject
 {
-    public string itemName;
+    public string itemName, itemDescription;
     public StatToChange statToChange;
-    public int amountToChageStat;
-    public GameObject worldPrefab; 
+    public int amountToChageStat, quantity;
+    public GameObject worldPrefab;
+    public Sprite sprite;
 
     public void UseItem()
     {

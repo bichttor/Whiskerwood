@@ -378,11 +378,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: 
+  itemDescription: 
   itemQuantity: 0
   itemSprite: {fileID: 0}
+  emptySprite: {fileID: 0}
   isFull: 0
-  quantityText: {fileID: 6007115596188035276}
+  selectedItem: 0
   itemImage: {fileID: 8763118347434791773}
   selectedShader: {fileID: 5750341971226280596}
-  selectedItem: 0
   inventoryManager: {fileID: 0}
+  itemSO: {fileID: 0}
+  ItemDescriptionText: {fileID: 0}
+  ItemDescriptionName: {fileID: 0}
+  quantityText: {fileID: 6007115596188035276}
+  playerTransform: {fileID: 0}
