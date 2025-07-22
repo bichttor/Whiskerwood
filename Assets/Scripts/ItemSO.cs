@@ -10,19 +10,23 @@ public class ItemSO : ScriptableObject
 
     public void UseItem()
     {
-        if (statToChange == StatToChange.health)
-        {
-            //update health
-        }
-        if (statToChange == StatToChange.stamina)
-        {
-            //update stamina
-        }
-        if (statToChange == StatToChange.xp)
-        {
-            //update xp
-        }
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+        PlayerStats stats = player.GetComponent<PlayerStats>();
+        if (stats == null) return;
 
+        switch (statToChange)
+        {
+            case StatToChange.health:
+                stats.Heal((float)amountToChageStat);
+                break;
+            case StatToChange.stamina:
+                stats.AddStamina((float)amountToChageStat);
+                break;
+            case StatToChange.xp:
+                stats.AddExperience((float)amountToChageStat);
+                break;
+        }
     }
     public enum StatToChange
     {

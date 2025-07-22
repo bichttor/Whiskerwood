@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48359f15b3e092f4aac01e24998e457e, type: 3}
-  m_Name: Health Potion
+  m_Name: Salmon Paste
   m_EditorClassIdentifier: 
-  itemName: Health Potion
-  itemDescription: testtest
+  itemName: Salmon Paste
+  itemDescription: this heals more than chicken
   statToChange: 1
-  amountToChageStat: 10
+  amountToChageStat: 30
   quantity: 1
-  bottlecapsPrice: 15
+  bottlecapsPrice: 45
   worldPrefab: {fileID: 0}
-  sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 0}

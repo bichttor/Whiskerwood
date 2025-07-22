@@ -13,9 +13,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public ItemSO itemSO;
     public TMP_Text ItemDescriptionText, ItemDescriptionName, quantityText;
     public Transform playerTransform;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Start()
     {
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
@@ -26,40 +23,18 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         this.itemSO = itemSO;
         this.itemQuantity = quantity;
         quantityText.text = quantity.ToString();
-        quantityText.enabled = true;
+        quantityText.gameObject.SetActive(true);
         this.itemSO.quantity = quantity;
     }
-    /*public void onRightClick()
-    {
-        Vector3 dropPosition = playerTransform.position + playerTransform.forward * 1.5f + Vector3.up * 0.5f;
-        GameObject dropped = Instantiate(itemSO.worldPrefab, dropPosition, Quaternion.identity);
-        Item newItem = dropped.GetComponent<Item>();
-        newItem.itemSO = itemSO;
-        newItem.quantity = 1;
 
-        newItem.transform.SetParent(null);
-        if (newItem.TryGetComponent<Rigidbody>(out var rb))
-        {
-            rb.isKinematic = false;
-        }
-        if (newItem.TryGetComponent<Collider>(out var col))
-        {
-            col.enabled = true;
-        }
-        newItem.transform.position = transform.position + transform.forward;
-        this.itemQuantity -= 1;
-        quantityText.text = this.itemQuantity.ToString();
-        if (this.itemQuantity <= 0)
-        {
-            EmptySlot();
-        }
-    }*/
     public void EmptySlot()
     {
-        quantityText.enabled = false;
+        quantityText.gameObject.SetActive(false);
         itemImage.sprite = emptySprite;
         ItemDescriptionText.text = "";
         ItemDescriptionName.text = "";
+        itemSO = null;
+        itemQuantity = 0;
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -84,8 +59,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (itemSO == null || itemQuantity <= 0)
         {
-           return; 
-        } 
+            return;
+        }
 
         inventoryManager.UseItem(itemSO.itemName);
         itemQuantity--;
@@ -95,5 +70,18 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             EmptySlot();
         }
+    }
+    
+    public void OnDropItem()
+    {
+        if (itemSO == null || itemQuantity <= 0 || playerTransform == null)
+        {
+            return;
+        }
+
+        GameObject itemInstance = Instantiate(itemSO.worldPrefab, playerTransform.position, Quaternion.identity);
+        itemInstance.GetComponent<Item>().itemSO = itemSO;
+        itemInstance.GetComponent<Item>().quantity = itemQuantity;
+        EmptySlot();
     }
 }

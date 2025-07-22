@@ -81,6 +81,16 @@ public class PlayerStats : MonoBehaviour
 
         rechargeCoroutine = StartCoroutine(RechargeStamina());
     }
+
+    public void AddStamina(float stamina)
+    {
+        currentStamina += stamina;
+        if (currentStamina >= maxStamina)
+        {
+            currentStamina = maxStamina;
+        }
+        staminaBar.SetSlider(currentStamina);
+    }
     public IEnumerator RechargeStamina()
     {
         isRecharging = true;

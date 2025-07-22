@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48359f15b3e092f4aac01e24998e457e, type: 3}
+  m_Name: Xtremenip
+  m_EditorClassIdentifier: 
+  itemName: Xtremenip
+  itemDescription: this is more than regular catnip
+  statToChange: 2
+  amountToChageStat: 45
+  quantity: 1
+  bottlecapsPrice: 60
+  worldPrefab: {fileID: 0}
+  sprite: {fileID: 0}
