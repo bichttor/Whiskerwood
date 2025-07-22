@@ -6,6 +6,7 @@ public class ShopManager : MonoBehaviour
     public InventoryManager inventory;
     public bool menuOn = false;
     public GameObject shopMenu;
+    public User user;
       void Update()
     {
         if (menuOn && Input.GetKeyDown(KeyCode.Escape))
@@ -43,6 +44,15 @@ public class ShopManager : MonoBehaviour
     }
     public void BuyItem(ItemSO item)
     {
-        inventory.AddItem(item, 1); // Add to player inventory
+        if (user.playerStats.BottleCaps >= item.bottlecapsPrice)
+        {
+            inventory.AddItem(item, 1); // Add to player inventory
+            user.playerStats.SpendBottleCaps(item.bottlecapsPrice);
+            //remove the item maybe perhaps
+        }
+        else
+        {
+            Debug.Log("not enough bottlecaps to buy");
+        }
     }
 }

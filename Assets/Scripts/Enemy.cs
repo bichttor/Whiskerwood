@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.Find("User").transform;
         agent = GetComponent<NavMeshAgent>();
+        setBottleCaps();
     }
 
     // Update is called once per frame
@@ -94,7 +95,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        GetComponent<AudioSource>().Play();
+        //GetComponent<AudioSource>().Play();
         if (health <= 0)
         {
             Die();

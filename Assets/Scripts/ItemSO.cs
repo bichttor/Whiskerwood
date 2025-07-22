@@ -4,7 +4,7 @@ public class ItemSO : ScriptableObject
 {
     public string itemName, itemDescription;
     public StatToChange statToChange;
-    public int amountToChageStat, quantity;
+    public int amountToChageStat, quantity, bottlecapsPrice;
     public GameObject worldPrefab;
     public Sprite sprite;
 

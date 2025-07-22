@@ -4,7 +4,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public GameObject InventoryMenu;
-    
+    public ItemSlot selectedSlot;
     public bool menuOn;
     public ItemSlot[] itemSlot;
     public ItemSO[] itemSOs;
@@ -30,17 +30,19 @@ public class InventoryManager : MonoBehaviour
                 Cursor.visible = true;
             }
         }
-
+        if (menuOn && Input.GetKeyDown(KeyCode.Q) && selectedSlot != null && selectedSlot.itemSO != null)
+        {
+        //selectedSlot.DropItem();
+        }
     }
 
-    public void UseIem(string name)
+    public void UseItem(string name)
     {
         for (int i = 0; i < itemSOs.Length; i++)
         {
             if (itemSOs[i].itemName == name)
             {
                 itemSOs[i].UseItem();
-                
             }
         }
         
@@ -49,19 +51,11 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (!itemSlot[i].isFull)
+            if (itemSlot[i].itemSO == null)
             {
                 itemSlot[i].AddItem(itemSO, quantity);
                 return;
             }
         }
     }       
-
-    public void DeselectAllSlots()
-    {
-        for (int i = 0; i < itemSlot.Length; i++)
-        {
-            itemSlot[i].selectedShader.SetActive(false);
-        }
-    }
 }

@@ -11,7 +11,7 @@ public class User : MonoBehaviour
     public float gravity = -9.81f;
     Vector3 currentGravity = Vector3.zero;
     public bool isSprinting = false;
-    PlayerStats playerStats;
+    public PlayerStats playerStats;
     public GameObject currentWeapon;
     public Transform weaponHoldPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

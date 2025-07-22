@@ -52,7 +52,7 @@ public class PlayerStats : MonoBehaviour
             //dead
             Debug.Log("DEAD");
         }
-        PlayTakeDamage();
+       // PlayTakeDamage();
         healthBar.SetSlider(currentHealth);
     }
 
@@ -111,13 +111,19 @@ public class PlayerStats : MonoBehaviour
         BottleCaps += amount;
     }
 
+    public void SpendBottleCaps(int amount)
+    {
+        BottleCaps -= amount;
+    }
+
+
     public void CheckForLevelUp()
     {
         if (currentExperience >= nextLevelsExperience)
         {
             currentLevel++;
             UpdateLevel();
-            PlayLevelUp();
+           // PlayLevelUp();
 
         }
     }

@@ -10,6 +10,5 @@ public class Vendor : MonoBehaviour, IInteractable
     public void Interact()
     {
         shopManager.OpenShop(itemsForSale);
-
     }
 }
