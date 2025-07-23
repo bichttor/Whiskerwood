@@ -59,6 +59,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (itemSO == null || itemQuantity <= 0)
         {
+            Debug.Log("No item to use or item quantity is zero.");
             return;
         }
 

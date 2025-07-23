@@ -8,8 +8,9 @@ public class ItemSO : ScriptableObject
     public GameObject worldPrefab;
     public Sprite sprite;
 
-    public void UseItem()
+    public virtual void UseItem()
     {
+        Debug.Log("Using item: " + itemName);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
         PlayerStats stats = player.GetComponent<PlayerStats>();

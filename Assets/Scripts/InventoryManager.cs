@@ -40,8 +40,10 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < itemSOs.Length; i++)
         {
+            Debug.Log("Checking item: " + itemSOs[i].itemName);
             if (itemSOs[i].itemName == name)
             {
+                Debug.Log("Using item for IM: " + name);
                 itemSOs[i].UseItem();
             }
         }
@@ -53,6 +55,7 @@ public class InventoryManager : MonoBehaviour
         {
             if (itemSlot[i].itemSO == null)
             {
+                Debug.Log("Adding item: " + itemSO.itemName + " with quantity: " + quantity);
                 itemSlot[i].AddItem(itemSO, quantity);
                 return;
             }

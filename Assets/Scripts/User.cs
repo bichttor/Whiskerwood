@@ -12,7 +12,7 @@ public class User : MonoBehaviour
     Vector3 currentGravity = Vector3.zero;
     public bool isSprinting = false;
     public PlayerStats playerStats;
-    public GameObject currentWeapon;
+    public Weapon currentWeapon;
     public Transform weaponHoldPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -79,29 +79,39 @@ public class User : MonoBehaviour
     {
         SimulateGravity();
     }
-    
-     public void EquipWeapon(GameObject weaponObject)
+    //FIXME
+     public void EquipWeapon(WeaponSO weaponSO)
     {
-        Weapon weapon = weaponObject.GetComponent<Weapon>();
-        if (weapon != null)
+        if(weaponSO == null)
         {
-            currentWeapon = weaponObject;
-            Transform gripPoint = weaponObject.transform.Find("GripPoint");
-            weaponObject.transform.SetParent(weaponHoldPoint);
-            weaponObject.transform.localPosition = -gripPoint.localPosition;
-            weaponObject.transform.localRotation = Quaternion.Inverse(gripPoint.localRotation);
+            Debug.LogError("WeaponSO is null. Cannot equip weapon.");
+            return;
+        }
+        if (weaponSO != null)
+        {
+            GameObject weaponGO = Instantiate(weaponSO.worldPrefab);
+            Weapon weapon = weaponGO.GetComponent<Weapon>();
+            weapon.weaponSO = weaponSO;
+            if (weapon == null)
+            {
+                Debug.LogError("Weapon instance is null. Check the prefab assignment in WeaponSO.");
+                return;
+            }
+            currentWeapon = weapon;
+            Transform gripPoint = currentWeapon.transform.Find("Cylinder");
+            currentWeapon.transform.SetParent(weaponHoldPoint);
+            currentWeapon.transform.localPosition = -gripPoint.localPosition;
+            currentWeapon.transform.localRotation = Quaternion.Inverse(gripPoint.localRotation);
 
-            if (weaponObject.TryGetComponent<Collider>(out var col))
+            if (currentWeapon.TryGetComponent<Collider>(out var col))
             {
                 col.enabled = false;
             }
-            if (weaponObject.TryGetComponent<Rigidbody>(out var rb))
+            if (currentWeapon.TryGetComponent<Rigidbody>(out var rb))
             {
                 rb.isKinematic = true;
             }
-            
-
-            playerStats.currentDamage = weapon.damage;
+            playerStats.currentDamage = weaponSO.damage;
         }
     }
 
