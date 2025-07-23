@@ -4,17 +4,16 @@ using UnityEngine;
 //this is a script for the user
 public class User : MonoBehaviour
 {
-
     float speed = 12f;
     float sprintCost = 18;
-    CharacterController cc;
+    public CharacterController cc;
     public float gravity = -9.81f;
-    Vector3 currentGravity = Vector3.zero;
+    public Vector3 currentGravity = Vector3.zero;
     public bool isSprinting = false;
     public PlayerStats playerStats;
     public Weapon currentWeapon;
     public Transform weaponHoldPoint;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+ 
     void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -79,7 +78,7 @@ public class User : MonoBehaviour
     {
         SimulateGravity();
     }
-    //FIXME
+
      public void EquipWeapon(WeaponSO weaponSO)
     {
         if(weaponSO == null)
@@ -89,16 +88,12 @@ public class User : MonoBehaviour
         }
         if (weaponSO != null)
         {
-            GameObject weaponGO = Instantiate(weaponSO.worldPrefab);
-            Weapon weapon = weaponGO.GetComponent<Weapon>();
+            GameObject weaponInstance = Instantiate(weaponSO.worldPrefab);
+            Weapon weapon = weaponInstance.GetComponent<Weapon>();
             weapon.weaponSO = weaponSO;
-            if (weapon == null)
-            {
-                Debug.LogError("Weapon instance is null. Check the prefab assignment in WeaponSO.");
-                return;
-            }
             currentWeapon = weapon;
-            Transform gripPoint = currentWeapon.transform.Find("Cylinder");
+
+            Transform gripPoint = currentWeapon.transform.Find("GripPoint");
             currentWeapon.transform.SetParent(weaponHoldPoint);
             currentWeapon.transform.localPosition = -gripPoint.localPosition;
             currentWeapon.transform.localRotation = Quaternion.Inverse(gripPoint.localRotation);

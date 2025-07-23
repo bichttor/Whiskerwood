@@ -36,7 +36,11 @@ public class UseInputHandler : MonoBehaviour
         {
             movement += Vector3.right;
         }
-
+        if (Input.GetKeyDown(KeyCode.Space) && user.cc.isGrounded)
+        {
+            user.currentGravity.y = 5f; 
+            user.playerStats.SpendStamina(10f); 
+        }
         user.isSprinting = Input.GetKey(KeyCode.LeftShift);
 
         Vector3 moveForward = cameraTransform.forward * movement.z;

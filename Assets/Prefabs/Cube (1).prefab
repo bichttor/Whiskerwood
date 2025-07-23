@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2144969155107394592}
   - component: {fileID: 7310667441888843699}
   - component: {fileID: 3929105222541743877}
-  - component: {fileID: -5350082975280120327}
+  - component: {fileID: 346627832187644621}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 70.7, y: 1.29, z: 71.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6202538709260714665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2144969155107394592
@@ -109,7 +110,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-5350082975280120327
+--- !u!114 &346627832187644621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,9 +119,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1916069758592485613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcc8ef918d123834f8cd5b973d42cfc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 93004d28cf5e3644eac97fbcd4f9913a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
-  itemSO: {fileID: 11400000, guid: 284195ddfb8042445b6712e49d2fee65, type: 2}
-  quantity: 0
+  weaponSO: {fileID: 11400000, guid: cc12226516bcde243a56d202b9638ad2, type: 2}
+  quantity: 1
+--- !u!1 &5785648119142167485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6202538709260714665}
+  m_Layer: 0
+  m_Name: GripPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6202538709260714665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5785648119142167485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 706362062834134008}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

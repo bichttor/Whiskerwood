@@ -4,7 +4,6 @@ public class WeaponSO : ItemSO
 {
     public int damage;
     public float attackSpeed;
-
     public float range;
 
     public override void UseItem()

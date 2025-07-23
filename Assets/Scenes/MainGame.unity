@@ -1142,7 +1142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8982588936cda4542b97fa8a606d2dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cc: {fileID: 0}
   gravity: -9.81
+  currentGravity: {x: 0, y: 0, z: 0}
   isSprinting: 0
   playerStats: {fileID: 0}
   currentWeapon: {fileID: 0}
@@ -1290,26 +1292,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &326167793 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1916069758592485613, guid: 2c07390986355ac41898bb4ef67ff4d4, type: 3}
-  m_PrefabInstance: {fileID: 7149731564646185542}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &326167794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326167793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93004d28cf5e3644eac97fbcd4f9913a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
-  weaponSO: {fileID: 11400000, guid: cc12226516bcde243a56d202b9638ad2, type: 2}
-  quantity: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -9239,10 +9221,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5350082975280120327, guid: 2c07390986355ac41898bb4ef67ff4d4, type: 3}
-      propertyPath: quantity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 706362062834134008, guid: 2c07390986355ac41898bb4ef67ff4d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 70.7
@@ -9287,14 +9265,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -5350082975280120327, guid: 2c07390986355ac41898bb4ef67ff4d4, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1916069758592485613, guid: 2c07390986355ac41898bb4ef67ff4d4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 326167794}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c07390986355ac41898bb4ef67ff4d4, type: 3}
 --- !u!1001 &7241157953350401989
 PrefabInstance:

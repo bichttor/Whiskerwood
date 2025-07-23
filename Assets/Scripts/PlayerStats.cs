@@ -4,8 +4,8 @@ using UnityEngine.Rendering;
 
 public class PlayerStats : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float maxHealth,currentHealth;
+
+    public float maxHealth,currentHealth; 
     public StatsBar healthBar, staminaBar, experienceBar;
     public float currentStamina, maxStamina;
     public float damage = 5f; // base damage with no weapons
@@ -36,13 +36,7 @@ public class PlayerStats : MonoBehaviour
         experienceBar.SetSliderMax(nextLevelsExperience);
         experienceBar.SetSlider(currentExperience);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    /*METHODS FOR HEALTH*/
     public void TakeDamage(float damage)
     {
         
@@ -65,7 +59,7 @@ public class PlayerStats : MonoBehaviour
         }
         healthBar.SetSlider(currentHealth);
     }
-
+    /*METHODS FOR STAMINA*/
     public void SpendStamina(float amount)
     {
         currentStamina -= amount;
@@ -109,25 +103,14 @@ public class PlayerStats : MonoBehaviour
         }
         isRecharging = false;
     }
-
+    /*METHODS FOR EXPERIENCE*/
     public void AddExperience(float amount)
     {
         currentExperience += amount;
         CheckForLevelUp();
         experienceBar.SetSlider(currentExperience);
     }
-    public void AddBottleCaps(int amount)
-    {
-        BottleCaps += amount;
-    }
-
-    public void SpendBottleCaps(int amount)
-    {
-        BottleCaps -= amount;
-    }
-
-
-    public void CheckForLevelUp()
+        public void CheckForLevelUp()
     {
         if (currentExperience >= nextLevelsExperience)
         {
@@ -137,12 +120,21 @@ public class PlayerStats : MonoBehaviour
 
         }
     }
-
     public void UpdateLevel()
     {
         nextLevelsExperience *= 1.2f;
         currentExperience = 0;
         experienceBar.SetSliderMax(nextLevelsExperience);
         experienceBar.SetSlider(currentExperience);
+    }
+    /*METHODS FOR BOTTLE CAPS*/
+    public void AddBottleCaps(int amount)
+    {
+        BottleCaps += amount;
+    }
+
+    public void SpendBottleCaps(int amount)
+    {
+        BottleCaps -= amount;
     }
 }
