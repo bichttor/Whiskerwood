@@ -14,14 +14,15 @@ public class ShopManager : MonoBehaviour
             CloseShop();
         }
     }
+ 
     public void OpenShop(ItemSO[] itemsForSale)
     {
-        
+
         shopMenu.SetActive(true);
         menuOn = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;     
+        Cursor.visible = true;
         for (int i = 0; i < itemSlots.Length; i++)
         {
             if (i < itemsForSale.Length)
@@ -48,6 +49,7 @@ public class ShopManager : MonoBehaviour
         {
             inventory.AddItem(item, 1); // Add to player inventory
             user.playerStats.SpendBottleCaps(item.bottlecapsPrice);
+            GameEventsManager.Instance.TriggerItemPurchased(item);
             //remove the item maybe perhaps
         }
         else

@@ -104,8 +104,7 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         //logic for dying 
-        player.GetComponent<PlayerStats>().AddExperience(experience);
-        player.GetComponent<PlayerStats>().AddBottleCaps(bottlecaps);
+        GameEventsManager.Instance.TriggerEnemyKilled(experience, bottlecaps);
         Destroy(gameObject);
 
     }
@@ -115,7 +114,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerStats>().TakeDamage(damage);
+             GameEventsManager.Instance.TriggerPlayerDamaged(damage);
         }
     }
 

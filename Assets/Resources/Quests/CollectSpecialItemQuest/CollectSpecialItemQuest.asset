@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af3de00d2e409d4ea5932cccbad500b, type: 3}
+  m_Name: CollectSpecialItemQuest
+  m_EditorClassIdentifier: 
+  id: CollectSpecialItemQuest
+  displayName: Collect Special Item
+  levelRequirement: 1
+  questPrerequisites: []
+  questSteps:
+  - {fileID: 3480300353286718745, guid: 3145536a4db828f48b70932ea7124a8c, type: 3}
+  experienceReward: 20
+  bottleCapsReward: 10

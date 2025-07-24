@@ -12,6 +12,7 @@ public class ShopItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public ItemSO currentItem;
     public ShopManager shopManager;
 
+
     public void SetItem(ItemSO item)
     {
         currentItem = item;

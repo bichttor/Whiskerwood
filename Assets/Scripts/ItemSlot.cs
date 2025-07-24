@@ -18,6 +18,20 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
+    void OnEnable()
+    {
+        if (GameEventsManager.Instance != null)
+        {
+            GameEventsManager.Instance.OnItemPickedUp += AddItem;
+        }
+    }
+    void OnDisable()
+    {
+        if (GameEventsManager.Instance != null)
+        {
+            GameEventsManager.Instance.OnItemPickedUp -= AddItem;
+        }
+    }
     public void AddItem(ItemSO itemSO, int quantity)
     {
         this.itemSO = itemSO;
@@ -81,8 +95,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
         GameObject itemInstance = Instantiate(itemSO.worldPrefab, playerTransform.position, Quaternion.identity);
-        itemInstance.GetComponent<Item>().itemSO = itemSO;
-        itemInstance.GetComponent<Item>().quantity = itemQuantity;
+        var itemComponent = itemInstance.GetComponent<Item>();
+        if (itemComponent != null)
+        {
+            itemComponent.itemSO = itemSO;
+            itemComponent.quantity = itemQuantity;
+        }
+        GameEventsManager.Instance.TriggerItemDropped(itemSO, itemQuantity); 
         EmptySlot();
     }
 }

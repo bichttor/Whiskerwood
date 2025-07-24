@@ -24,11 +24,9 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-
         healthBar.SetSliderMax(maxHealth);
 
         currentStamina = maxStamina;
-
         staminaBar.SetSliderMax(maxStamina);
 
         currentDamage = damage;
@@ -36,17 +34,43 @@ public class PlayerStats : MonoBehaviour
         experienceBar.SetSliderMax(nextLevelsExperience);
         experienceBar.SetSlider(currentExperience);
     }
+     void OnEnable()
+    {
+        if (GameEventsManager.Instance != null)
+        {
+            GameEventsManager.Instance.OnPlayerDamaged += TakeDamage;
+            GameEventsManager.Instance.OnPlayerHealed += Heal;
+            GameEventsManager.Instance.OnEnemyKilled += HandleEnemyKilled;
+            GameEventsManager.Instance.OnPlayerLevelUp += UpdateLevel;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (GameEventsManager.Instance != null)
+        {
+            GameEventsManager.Instance.OnPlayerDamaged -= TakeDamage;
+            GameEventsManager.Instance.OnPlayerHealed -= Heal;
+            GameEventsManager.Instance.OnEnemyKilled -= HandleEnemyKilled;
+            GameEventsManager.Instance.OnPlayerLevelUp -= UpdateLevel;
+        }
+    }
+      private void HandleEnemyKilled(float xp, int bottlecaps)
+    {
+        AddExperience(xp);
+        AddBottleCaps(bottlecaps);
+    }
     /*METHODS FOR HEALTH*/
     public void TakeDamage(float damage)
     {
-        
+
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
             //dead
             Debug.Log("DEAD");
         }
-       // PlayTakeDamage();
+        // PlayTakeDamage();
         healthBar.SetSlider(currentHealth);
     }
 
