@@ -9,7 +9,7 @@ public class QuestManager : MonoBehaviour
         questMap = CreateQuestMap();
     }
 
-    public void onEnable()
+    public void OnEnable()
     {
         if (GameEventsManager.Instance != null)
         {
@@ -20,7 +20,7 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    public void onDisable()
+    public void OnDisable()
     {
         if (GameEventsManager.Instance != null)
         {
@@ -47,7 +47,7 @@ public class QuestManager : MonoBehaviour
     public bool CheckRequirementsMet(Quest quest)
     {
         bool meetsRequirements = true;
-        if (currentPlayerLevel < quest.info.requiredLevel)
+        if (currentPlayerLevel < quest.info.levelRequirement)
         {
             meetsRequirements = false;
         }
@@ -56,6 +56,7 @@ public class QuestManager : MonoBehaviour
             if (GetQuestById(prereq.id).state != QuestState.FINISHED)
             {
                 meetsRequirements = false;
+                break;
             }
         }
         return meetsRequirements;
@@ -66,12 +67,14 @@ public class QuestManager : MonoBehaviour
         {
             if(quest.state == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest))
             {
+                Debug.Log($"Quest {quest.info.id} requirements met, changing state to CAN_START.");
               ChangeQuestState(quest.info.id, QuestState.CAN_START);
             }
         }
     }
     public void ChangeQuestState(string id, QuestState state)
     {
+        Debug.Log($"Changing quest state for {id} to {state}");
         Quest quest = GetQuestById(id);
         quest.state = state;
         GameEventsManager.Instance.questEvents.ChangeQuestState(quest);
@@ -107,9 +110,8 @@ public class QuestManager : MonoBehaviour
     }
     public void ClaimRewards(Quest quest)
     {
-        /*MAKE EVENTS*/
-       // GameEventsManager.Instance.OnBottleCapsGained(quest.info.bottleCapsReward);
-        // GameEventsManager.Instance.OnExperienceGained(quest.info.experienceReward);
+        GameEventsManager.Instance.TriggerBottleCapsGained(quest.info.bottleCapsReward);
+        GameEventsManager.Instance.TriggerExperienceGained(quest.info.experienceReward);
         Debug.Log($"Claiming rewards for quest: {quest.info.id}");
        
     }

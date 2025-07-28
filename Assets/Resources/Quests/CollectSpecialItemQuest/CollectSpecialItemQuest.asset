@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: CollectSpecialItemQuest
   displayName: Collect Special Item
-  levelRequirement: 1
+  levelRequirement: 0
   questPrerequisites: []
   questSteps:
+  - {fileID: 3480300353286718745, guid: 3145536a4db828f48b70932ea7124a8c, type: 3}
   - {fileID: 3480300353286718745, guid: 3145536a4db828f48b70932ea7124a8c, type: 3}
   experienceReward: 20
   bottleCapsReward: 10

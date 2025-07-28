@@ -12,11 +12,11 @@ public class QuestPoint : MonoBehaviour
         questId = questInfoForPoint.id;
 
     }
-
     public void OnEnable()
     {
         if (GameEventsManager.Instance != null)
         {
+            Debug.Log($"[QuestPoint] Subscribing to quest state changes for quest {questId}");
             GameEventsManager.Instance.questEvents.onQuestStateChange += QuestStateChange;
         }
     }
@@ -28,13 +28,14 @@ public class QuestPoint : MonoBehaviour
         }
 
     }
-
     public void QuestStateChange(Quest quest)
     {
-        if (quest.info.id == questId)
-        {
-            currentQuestState = quest.state;
-            Debug.Log($"Quest state changed for {questId}: {currentQuestState}");
-        }
+        Debug.Log($"[QuestPoint] Received quest state change for {quest.info.id} (Expected: {questId})");
+
+    if (quest.info.id == questId)
+    {
+        currentQuestState = quest.state;
+        Debug.Log($"[QuestPoint] Quest state updated to: {currentQuestState}");
+    }
     }
 }

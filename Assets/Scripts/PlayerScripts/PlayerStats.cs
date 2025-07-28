@@ -36,34 +36,47 @@ public class PlayerStats : MonoBehaviour
     }
      void OnEnable()
     {
+        Debug.Log("PlayerStats enabled");
+        if(GameEventsManager.Instance == null)
+        {
+            Debug.LogError("GameEventsManager instance is null in PlayerStats");
+            return;
+        }
         if (GameEventsManager.Instance != null)
         {
+            Debug.Log("Subscribing to GameEventsManager events");
             GameEventsManager.Instance.OnPlayerDamaged += TakeDamage;
             GameEventsManager.Instance.OnPlayerHealed += Heal;
             GameEventsManager.Instance.OnEnemyKilled += HandleEnemyKilled;
             GameEventsManager.Instance.OnPlayerLevelUp += UpdateLevel;
+            GameEventsManager.Instance.OnBottleCapsGained += AddBottleCaps;
+            GameEventsManager.Instance.OnExperienceGained += AddExperience;
         }
     }
 
     void OnDisable()
     {
+        Debug.Log("PlayerStats disabled");
         if (GameEventsManager.Instance != null)
         {
             GameEventsManager.Instance.OnPlayerDamaged -= TakeDamage;
             GameEventsManager.Instance.OnPlayerHealed -= Heal;
             GameEventsManager.Instance.OnEnemyKilled -= HandleEnemyKilled;
             GameEventsManager.Instance.OnPlayerLevelUp -= UpdateLevel;
+            GameEventsManager.Instance.OnBottleCapsGained -= AddBottleCaps;
+            GameEventsManager.Instance.OnExperienceGained -= AddExperience;
         }
     }
-      private void HandleEnemyKilled(float xp, int bottlecaps)
+      public void HandleEnemyKilled(float xp, int bottlecaps)
     {
+        Debug.Log($"[PlayerStats] Handling enemy killed: XP={xp}, BottleCaps={bottlecaps}");
         AddExperience(xp);
         AddBottleCaps(bottlecaps);
     }
     /*METHODS FOR HEALTH*/
     public void TakeDamage(float damage)
     {
-
+        Debug.Log($"[PlayerStats] Taking damage: {damage}");
         currentHealth -= damage;
         if (currentHealth <= 0)
         {

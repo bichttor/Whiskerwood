@@ -94,6 +94,7 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
+        Debug.Log($"[Enemy] Taking damage: {damage}");
         health -= damage;
         //GetComponent<AudioSource>().Play();
         if (health <= 0)
@@ -103,7 +104,8 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
-        //logic for dying 
+        Debug.Log($"[Enemy] Died");
+        //logic for dying
         GameEventsManager.Instance.TriggerEnemyKilled(experience, bottlecaps);
         Destroy(gameObject);
 

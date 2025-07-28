@@ -13,6 +13,8 @@ public class GameEventsManager : MonoBehaviour
     public event Action<ItemSO, int> OnItemDropped;
     public event Action<ItemSO> OnItemUsed;
     public event Action<ItemSO> OnItemPurchased;
+    public event Action<int> OnBottleCapsGained;
+    public event Action<float> OnExperienceGained;
     public QuestEvents questEvents;
     void Awake()
     {
@@ -27,9 +29,10 @@ public class GameEventsManager : MonoBehaviour
         }
 
         questEvents = new QuestEvents();
-}
+    }
     public void TriggerEnemyKilled(float experience, int bottlecaps)
     {
+        Debug.Log($"[GameEventsManager] Triggering enemy killed: XP={experience}, BottleCaps={bottlecaps}");
         OnEnemyKilled?.Invoke(experience, bottlecaps);
     }
     public void TriggerPlayerLevelUp()
@@ -38,6 +41,7 @@ public class GameEventsManager : MonoBehaviour
     }
     public void TriggerPlayerDamaged(float damage)
     {
+        Debug.Log($"[GameEventsManager] Triggering player damaged: {damage}");
         OnPlayerDamaged?.Invoke(damage);
     }
 
@@ -45,7 +49,7 @@ public class GameEventsManager : MonoBehaviour
     {
         OnPlayerHealed?.Invoke(amount);
     }
-      public void TriggerItemPickedUp(ItemSO item, int amount)
+    public void TriggerItemPickedUp(ItemSO item, int amount)
     {
         OnItemPickedUp?.Invoke(item, amount);
     }
@@ -60,5 +64,13 @@ public class GameEventsManager : MonoBehaviour
     public void TriggerItemPurchased(ItemSO item)
     {
         OnItemPurchased?.Invoke(item);
+    }
+    public void TriggerBottleCapsGained(int amount)
+    {
+        OnBottleCapsGained?.Invoke(amount);
+    }
+    public void TriggerExperienceGained(float amount)
+    {
+        OnExperienceGained?.Invoke(amount);
     }
 }
