@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
 
     public float maxHealth,currentHealth; 
     public StatsBar healthBar, staminaBar, experienceBar;
+    
     public float currentStamina, maxStamina;
     public float damage = 5f; // base damage with no weapons
     public float currentDamage; //for weapons 
@@ -36,15 +37,8 @@ public class PlayerStats : MonoBehaviour
     }
      void OnEnable()
     {
-        Debug.Log("PlayerStats enabled");
-        if(GameEventsManager.Instance == null)
-        {
-            Debug.LogError("GameEventsManager instance is null in PlayerStats");
-            return;
-        }
         if (GameEventsManager.Instance != null)
         {
-            Debug.Log("Subscribing to GameEventsManager events");
             GameEventsManager.Instance.OnPlayerDamaged += TakeDamage;
             GameEventsManager.Instance.OnPlayerHealed += Heal;
             GameEventsManager.Instance.OnEnemyKilled += HandleEnemyKilled;
@@ -56,7 +50,6 @@ public class PlayerStats : MonoBehaviour
 
     void OnDisable()
     {
-        Debug.Log("PlayerStats disabled");
         if (GameEventsManager.Instance != null)
         {
             GameEventsManager.Instance.OnPlayerDamaged -= TakeDamage;
@@ -69,14 +62,12 @@ public class PlayerStats : MonoBehaviour
     }
       public void HandleEnemyKilled(float xp, int bottlecaps)
     {
-        Debug.Log($"[PlayerStats] Handling enemy killed: XP={xp}, BottleCaps={bottlecaps}");
         AddExperience(xp);
         AddBottleCaps(bottlecaps);
     }
     /*METHODS FOR HEALTH*/
     public void TakeDamage(float damage)
     {
-        Debug.Log($"[PlayerStats] Taking damage: {damage}");
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
@@ -151,7 +142,6 @@ public class PlayerStats : MonoBehaviour
     {
         if (currentExperience >= nextLevelsExperience)
         {
-            currentLevel++;
             UpdateLevel();
            // PlayLevelUp();
 
@@ -159,8 +149,15 @@ public class PlayerStats : MonoBehaviour
     }
     public void UpdateLevel()
     {
+        currentLevel++;
         nextLevelsExperience *= 1.2f;
         currentExperience = 0;
+
+        maxHealth += 10; // Increase max health on level up
+        maxStamina += 5; // Increase max stamina on level up
+        currentHealth = maxHealth; // Restore health on level up
+        currentStamina = maxStamina; // Restore stamina on level up
+
         experienceBar.SetSliderMax(nextLevelsExperience);
         experienceBar.SetSlider(currentExperience);
     }

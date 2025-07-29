@@ -2,24 +2,26 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    public string npcName;
     public QuestPoint questPoint;
-    
+    public Dialogue dialogue;
     public void Interact()
     {
-        if(questPoint == null)
+        //No quest point assigned, just start dialogue
+        if (questPoint == null)
         {
-            Debug.LogWarning("No quest point assigned to this NPC.");
-            return;
+            FindFirstObjectByType<DialogueManager>().StartDialogue(dialogue);
         }
-        if (questPoint != null && questPoint.currentQuestState == QuestState.CAN_START)
+        else if (questPoint != null && questPoint.currentQuestState == QuestState.CAN_START)
         {
-            // Start the quest if it hasn't been started yet
+            //If quest point is assigned and the quest can be started, start the quest
             Debug.Log($"Starting quest: {questPoint.questId}");
+            FindFirstObjectByType<DialogueManager>().StartDialogue(dialogue);
             GameEventsManager.Instance.questEvents.StartQuest(questPoint.questId);
         }
-        else if (questPoint != null && questPoint.currentQuestState == QuestState.CAN_FINISH)
+         else if (questPoint != null && questPoint.currentQuestState == QuestState.CAN_FINISH)
         {
+            //If quest point is assigned and the quest can be finished, finish the quest
+            FindFirstObjectByType<DialogueManager>().FinishQuestDialogue(dialogue);
             GameEventsManager.Instance.questEvents.CompleteQuest(questPoint.questId);
             Debug.Log($"Completing quest: {questPoint.questId}");
         }
