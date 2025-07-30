@@ -5,9 +5,9 @@ using UnityEngine.Rendering;
 public class PlayerStats : MonoBehaviour
 {
 
-    public float maxHealth,currentHealth; 
+    public float maxHealth, currentHealth;
     public StatsBar healthBar, staminaBar, experienceBar;
-    
+    public HUD hud;
     public float currentStamina, maxStamina;
     public float damage = 5f; // base damage with no weapons
     public float currentDamage; //for weapons 
@@ -17,25 +17,26 @@ public class PlayerStats : MonoBehaviour
     private Coroutine rechargeCoroutine;
     public bool isRecharging = false;
     public float chargeRate = 30;
-    public AudioSource takedamgeSFX;
-    public AudioSource LevelUpSFX;
+    public AudioSource audioSource;
+    public AudioClip takeDamageSound;
+    public AudioClip levelUpSound;
     public int BottleCaps;
-    public void PlayTakeDamage() => takedamgeSFX.Play();
-    public void PlayLevelUp() => LevelUpSFX.Play();
+
     void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetSliderMax(maxHealth);
+        hud.healthBar.SetSliderMax(maxHealth);
 
         currentStamina = maxStamina;
-        staminaBar.SetSliderMax(maxStamina);
+        hud.staminaBar.SetSliderMax(maxStamina);
 
         currentDamage = damage;
-
-        experienceBar.SetSliderMax(nextLevelsExperience);
-        experienceBar.SetSlider(currentExperience);
+        hud.experienceBar.SetSliderMax(nextLevelsExperience);
+        hud.experienceBar.SetSlider(currentExperience);
+        hud.SetBottleCaps(BottleCaps);
+        hud.SetLevel(currentLevel);
     }
-     void OnEnable()
+    void OnEnable()
     {
         if (GameEventsManager.Instance != null)
         {
@@ -60,7 +61,7 @@ public class PlayerStats : MonoBehaviour
             GameEventsManager.Instance.OnExperienceGained -= AddExperience;
         }
     }
-      public void HandleEnemyKilled(float xp, int bottlecaps)
+    public void HandleEnemyKilled(float xp, int bottlecaps)
     {
         AddExperience(xp);
         AddBottleCaps(bottlecaps);
@@ -74,8 +75,8 @@ public class PlayerStats : MonoBehaviour
             //dead
             Debug.Log("DEAD");
         }
-        // PlayTakeDamage();
-        healthBar.SetSlider(currentHealth);
+        PlaySFX(takeDamageSound);
+        hud.healthBar.SetSlider(currentHealth);
     }
 
     public void Heal(float heal)
@@ -85,7 +86,7 @@ public class PlayerStats : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        healthBar.SetSlider(currentHealth);
+        hud.healthBar.SetSlider(currentHealth);
     }
     /*METHODS FOR STAMINA*/
     public void SpendStamina(float amount)
@@ -94,7 +95,7 @@ public class PlayerStats : MonoBehaviour
         if (currentStamina < 0)
             currentStamina = 0;
 
-        staminaBar.SetSlider(currentStamina);
+        hud.staminaBar.SetSlider(currentStamina);
 
         if (rechargeCoroutine != null)
         {
@@ -111,7 +112,7 @@ public class PlayerStats : MonoBehaviour
         {
             currentStamina = maxStamina;
         }
-        staminaBar.SetSlider(currentStamina);
+        hud.staminaBar.SetSlider(currentStamina);
     }
     public IEnumerator RechargeStamina()
     {
@@ -136,14 +137,14 @@ public class PlayerStats : MonoBehaviour
     {
         currentExperience += amount;
         CheckForLevelUp();
-        experienceBar.SetSlider(currentExperience);
+        hud.experienceBar.SetSlider(currentExperience);
     }
-        public void CheckForLevelUp()
+    public void CheckForLevelUp()
     {
         if (currentExperience >= nextLevelsExperience)
         {
             UpdateLevel();
-           // PlayLevelUp();
+            PlaySFX(levelUpSound);
 
         }
     }
@@ -157,18 +158,27 @@ public class PlayerStats : MonoBehaviour
         maxStamina += 5; // Increase max stamina on level up
         currentHealth = maxHealth; // Restore health on level up
         currentStamina = maxStamina; // Restore stamina on level up
-
-        experienceBar.SetSliderMax(nextLevelsExperience);
-        experienceBar.SetSlider(currentExperience);
+        hud.SetLevel(currentLevel);
+        hud.experienceBar.SetSliderMax(nextLevelsExperience);
+        hud.experienceBar.SetSlider(currentExperience);
     }
     /*METHODS FOR BOTTLE CAPS*/
     public void AddBottleCaps(int amount)
     {
         BottleCaps += amount;
+        hud.SetBottleCaps(BottleCaps);
     }
 
     public void SpendBottleCaps(int amount)
     {
         BottleCaps -= amount;
+        hud.SetBottleCaps(BottleCaps);
+    }
+    public void PlaySFX(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }

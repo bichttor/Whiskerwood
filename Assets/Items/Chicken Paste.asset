@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Chicken Paste
   m_EditorClassIdentifier: 
   itemName: Chicken Paste
-  itemDescription: testtest
+  itemDescription: A common food for most, rubbish for the rich. Chicken is one of
+    the most avaliabe food source in Whiskerwood.
   statToChange: 1
   amountToChageStat: 10
   quantity: 1
   bottlecapsPrice: 15
   worldPrefab: {fileID: 919132149155446097, guid: 7939ff7b52f3ffc43b8e3aa5ef9d4a8e, type: 3}
-  sprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  sprite: {fileID: 21300000, guid: eab87f10d2afa594c92ed3d29451b618, type: 3}

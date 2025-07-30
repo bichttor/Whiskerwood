@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Xtremenip
   m_EditorClassIdentifier: 
   itemName: Xtremenip
-  itemDescription: this is more than regular catnip
+  itemDescription: Some may call it a drug, others call it a supplement. Crushed
+    up lorst flowers from the far lands of Cateria are enchanted to created this
+    powerful drug. Whatever you do, don't get caught with it.
   statToChange: 2
   amountToChageStat: 45
   quantity: 1

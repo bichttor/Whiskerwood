@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Catnip
   m_EditorClassIdentifier: 
   itemName: Catnip
-  itemDescription: this increases stamina
+  itemDescription: Common Drug us by everyone. There's nothing like some catnip and
+    an early sunrise.
   statToChange: 2
   amountToChageStat: 15
   quantity: 1

@@ -32,7 +32,7 @@ public class ShopItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             if (currentItem != null)
             {
                 itemNameText.text = currentItem.itemName;
-                itemDescriptionText.text = currentItem.itemDescription;
+                itemDescriptionText.text = "Price: " + currentItem.bottlecapsPrice + "\n" + currentItem.itemDescription;
             }
         }
 

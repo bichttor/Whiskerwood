@@ -39,11 +39,15 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         quantityText.text = quantity.ToString();
         quantityText.gameObject.SetActive(true);
         this.itemSO.quantity = quantity;
+        this.itemImage.sprite = itemSO.sprite;
+        itemImage.sprite = itemSO.sprite;
+        itemImage.gameObject.SetActive(true);
     }
 
     public void EmptySlot()
     {
         quantityText.gameObject.SetActive(false);
+        itemImage.gameObject.SetActive(false);
         itemImage.sprite = emptySprite;
         ItemDescriptionText.text = "";
         ItemDescriptionName.text = "";

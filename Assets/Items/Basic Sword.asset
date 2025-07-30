@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Basic Sword
   m_EditorClassIdentifier: 
   itemName: Basic Sword
-  itemDescription: This is a basic sword
+  itemDescription: Nothing special. A would probably do more damage than this.
   statToChange: 0
   amountToChageStat: 0
   quantity: 1
   bottlecapsPrice: 20
-  worldPrefab: {fileID: 1916069758592485613, guid: 2c07390986355ac41898bb4ef67ff4d4, type: 3}
-  sprite: {fileID: 0}
-  damage: 15
+  worldPrefab: {fileID: 1388328570094615198, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
+  sprite: {fileID: 21300000, guid: b2f3327f47464544293b6b9018e1296e, type: 3}
+  damage: 10
   attackSpeed: 2
-  range: 5
+  range: 3
