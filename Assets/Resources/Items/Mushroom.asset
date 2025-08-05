@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48359f15b3e092f4aac01e24998e457e, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
-  statToChange: 0
-  amountToChageStat: 0
-  quantity: 0
-  bottlecapsPrice: 0
-  worldPrefab: {fileID: 0}
-  sprite: {fileID: 0}
+  itemName: Mushroom
+  itemDescription: Scientists say this is a hallucinogenic drug, but others say it
+    opens their conscience. Just don't eat too much of it.
+  statToChange: 3
+  amountToChageStat: 10
+  quantity: 1
+  bottlecapsPrice: 15
+  worldPrefab: {fileID: 2723342397451582368, guid: ba48539e6b4789342a2f078ede6d548f, type: 3}
+  sprite: {fileID: 21300000, guid: 533bbe1c8660d2b4baac22db4296ade3, type: 3}
