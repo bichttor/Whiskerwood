@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CollectSpecialItemQuestStep : QuestStep
 {
-    public int itemToCollect = 5;
+    public int itemToCollect = 3;
     public int itemCollected = 0;
 
     public void OnEnable()
@@ -20,7 +20,7 @@ public class CollectSpecialItemQuestStep : QuestStep
     public void OnItemPickedUp(ItemSO item, int amount)
     {
         Debug.Log($"Item picked up: {item.itemName}, Amount: {amount}");
-        if (item.itemName == "Catnip")
+        if (item.itemName == "Mushroom")
         {
             itemCollected += amount;
             if (itemCollected >= itemToCollect)

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d3ea3ff04e6447458c646a978089271, type: 3}
-  m_Name: Spear
+  m_Name: Mace
   m_EditorClassIdentifier: 
-  itemName: Basic Spear
+  itemName: 
   itemDescription: 
   statToChange: 0
   amountToChageStat: 0
   quantity: 0
   bottlecapsPrice: 0
-  worldPrefab: {fileID: 0}
-  sprite: {fileID: 21300000, guid: bf28d1ab5e5c42e4aa2c9b729c09fce3, type: 3}
-  damage: 12
-  attackSpeed: 2
-  range: 4
+  worldPrefab: {fileID: 4756212165269144936, guid: a061dd334cf180b418709f0bc3b4ba13, type: 3}
+  sprite: {fileID: 21300000, guid: 06140cc248b05d2488fbb6493ce5fd11, type: 3}
+  damage: 0
+  attackSpeed: 0
+  range: 0

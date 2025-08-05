@@ -4,6 +4,19 @@ public class NPC : MonoBehaviour, IInteractable
 {
     public QuestPoint questPoint;
     public Dialogue dialogue;
+    public float walkPointRange;
+    public bool walkPointSet;
+    public Vector3 walkPoint;
+    public LayerMask groundMask;
+     public NavMeshAgent agent;
+    void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+    void Update()
+    {
+        SearchWalkPoint();
+    }
     public void Interact()
     {
         //No quest point assigned, just start dialogue
@@ -18,7 +31,7 @@ public class NPC : MonoBehaviour, IInteractable
             FindFirstObjectByType<DialogueManager>().StartDialogue(dialogue);
             GameEventsManager.Instance.questEvents.StartQuest(questPoint.questId);
         }
-         else if (questPoint != null && questPoint.currentQuestState == QuestState.CAN_FINISH)
+        else if (questPoint != null && questPoint.currentQuestState == QuestState.CAN_FINISH)
         {
             //If quest point is assigned and the quest can be finished, finish the quest
             FindFirstObjectByType<DialogueManager>().FinishQuestDialogue(dialogue);
@@ -26,5 +39,33 @@ public class NPC : MonoBehaviour, IInteractable
             Debug.Log($"Completing quest: {questPoint.questId}");
         }
 
+    }
+    public void Walking()
+    {
+        if (!walkPointSet)
+        {
+            SearchWalkPoint();
+        }
+        if (walkPointSet)
+        {
+            agent.SetDestination(walkPoint);
+        }
+         Vector3 distanceToPoint = transform.position - walkPoint;
+        if (distanceToPoint.magnitude < 1f)
+        {
+            walkPointSet = false;
+        }
+    }
+     public void SearchWalkPoint()
+    {
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, Vector3.down, 2f, groundMask))
+        {
+            walkPointSet = true;
+        }
     }
 }
