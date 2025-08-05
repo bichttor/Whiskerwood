@@ -20,5 +20,5 @@ MonoBehaviour:
   amountToChageStat: 0
   quantity: 1
   bottlecapsPrice: 200
-  worldPrefab: {fileID: 0}
+  worldPrefab: {fileID: 919132149155446097, guid: a9bec80935a5c3c4d994e012ae640d7c, type: 3}
   sprite: {fileID: 21300000, guid: d9c7df35c6600dd42b897ce1d9ae898b, type: 3}

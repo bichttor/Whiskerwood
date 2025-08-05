@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0069f5e4076b35e40a1cb12727f4ad37, type: 2}
+    - target: {fileID: 3638479638799495727, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
+      propertyPath: weaponSO
+      value: 
+      objectReference: {fileID: 11400000, guid: dd62249c54e47b141beb77e76c414685, type: 2}
     - target: {fileID: 3801561423023182703, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.23

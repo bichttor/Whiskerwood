@@ -10,7 +10,18 @@ public class InventoryManager : MonoBehaviour
     public ItemSO[] itemSOs;
    
     void Update()
-    {
+    {   
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (menuOn)
+            {
+                InventoryMenu.SetActive(false);
+                menuOn = false;
+                Time.timeScale = 1;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (menuOn)
@@ -30,10 +41,7 @@ public class InventoryManager : MonoBehaviour
                 Cursor.visible = true;
             }
         }
-        if (menuOn && Input.GetKeyDown(KeyCode.Q) && selectedSlot != null && selectedSlot.itemSO != null)
-        {
-        //selectedSlot.DropItem();
-        }
+      
     }
 
     public void UseItem(string name)

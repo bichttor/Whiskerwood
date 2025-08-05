@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int itemQuantity;
-    public Sprite itemSprite, emptySprite;
+    public Sprite emptySprite;
     public Image itemImage;
     public InventoryManager inventoryManager;
     public ItemSO itemSO;

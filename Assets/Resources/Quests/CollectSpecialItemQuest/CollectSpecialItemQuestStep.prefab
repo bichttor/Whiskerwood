@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinished: 0
-  itemToCollect: 2
+  questId: 
+  itemToCollect: 3
+  itemCollected: 0

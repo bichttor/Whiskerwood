@@ -50,7 +50,6 @@ public class ShopManager : MonoBehaviour
             inventory.AddItem(item, 1); // Add to player inventory
             user.playerStats.SpendBottleCaps(item.bottlecapsPrice);
             GameEventsManager.Instance.TriggerItemPurchased(item);
-            //remove the item maybe perhaps
         }
         else
         {

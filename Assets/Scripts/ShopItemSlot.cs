@@ -12,19 +12,20 @@ public class ShopItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public ItemSO currentItem;
     public ShopManager shopManager;
 
-
     public void SetItem(ItemSO item)
     {
         currentItem = item;
         itemNameText.text = item.itemName;
         itemDescriptionText.text = item.itemDescription;
         itemIcon.sprite = item.sprite;
+        itemIcon.gameObject.SetActive(true);
     }
 
     public void ClearSlot()
     {
         itemNameText.text = "";
         itemDescriptionText.text = "";
+        itemIcon.gameObject.SetActive(false);
         itemIcon.sprite = null;
     }
     public void OnPointerEnter(PointerEventData eventData)

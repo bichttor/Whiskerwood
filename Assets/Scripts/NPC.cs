@@ -5,17 +5,21 @@ public class NPC : MonoBehaviour, IInteractable
     public QuestPoint questPoint;
     public Dialogue dialogue;
     public float walkPointRange;
-    public bool walkPointSet;
+    public bool walkPointSet, wanderingNPC;
     public Vector3 walkPoint;
     public LayerMask groundMask;
-     public NavMeshAgent agent;
+     public UnityEngine.AI.NavMeshAgent agent;
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
     void Update()
     {
-        SearchWalkPoint();
+        if (wanderingNPC)
+        {
+            Walking();
+        }
+        
     }
     public void Interact()
     {

@@ -126,6 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9127178417729919491}
+  - component: {fileID: -9074741471899707042}
   m_Layer: 0
   m_Name: mace
   m_TagString: Untagged
@@ -151,6 +152,21 @@ Transform:
   - {fileID: 3264183362985462669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-9074741471899707042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756212165269144936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93004d28cf5e3644eac97fbcd4f9913a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 0}
+  weaponSO: {fileID: 11400000, guid: a6a89ebe98deab64b97d8130c2735d52, type: 2}
+  quantity: 1
 --- !u!1 &8611321610058726908
 GameObject:
   m_ObjectHideFlags: 0
