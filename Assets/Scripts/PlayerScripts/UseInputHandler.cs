@@ -2,13 +2,12 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
-
 public class UseInputHandler : MonoBehaviour
 {
     public Transform cameraTransform;
+
     public LayerMask layerMask;
     public User user;
-    public InventoryManager inventoryManager;
     public CameraTilt cameraTilt;
     float pitch = 0f; 
     float yaw = 0f;
@@ -57,30 +56,31 @@ public class UseInputHandler : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity ;
         pitch -= mouseY;
         pitch = Mathf.Clamp(pitch, -85f, 85f);
-        user.transform.rotation *= Quaternion.Euler(0f, mouseX, 0f); // smooth rotation
+        yaw += mouseX;
+        user.transform.rotation = Quaternion.Euler(0f, yaw, 0f);
         cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f); // camera tilt
 
         
         //Attack
         if (Input.GetMouseButtonDown(0))
         {
-            user.Attack(cameraTransform.forward);
+            user.Attack(cameraTransform.forward, cameraTransform);
         }
 
         //Pick up item
-        if (Input.GetKeyDown(KeyCode.E))
+       if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, 3f, layerMask))
+            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+            Debug.Log("Ray Origin: " + ray.origin + ", Direction: " + ray.direction);
+            Debug.DrawRay(ray.origin, ray.direction * 6f, Color.green, 2f);
+            if (Physics.Raycast(ray, out RaycastHit hit, 5f, layerMask))
             {
-                Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 3f, Color.red, 4f);
-                IInteractable interactable = raycastHit.transform.GetComponent<IInteractable>();
-                if (interactable != null)
-                {
-                    interactable.Interact();
-                }
-
+                Debug.Log("Hit " + hit.collider.name);
+                IInteractable interactable = hit.transform.GetComponent<IInteractable>();
+                interactable?.Interact();
             }
         }
+
         //Drop item
         if (Input.GetKeyDown(KeyCode.Q))
         {

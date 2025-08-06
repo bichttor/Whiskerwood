@@ -20,6 +20,7 @@ public class PlayerStats : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip takeDamageSound;
     public AudioClip levelUpSound;
+    public AudioClip attackSound;
     public int BottleCaps;
 
     void Start()

@@ -10,22 +10,28 @@ public class User : MonoBehaviour
     public float gravity = -9.81f;
     public Vector3 currentGravity = Vector3.zero;
     public bool isSprinting = false;
+    public bool isAttacking = false;
     public PlayerStats playerStats;
     public Weapon currentWeapon;
     public Transform weaponHoldPoint;
     public AnimationStateChanger animationStateChanger;
- 
+    public InventoryManager inventoryManager;
     void Start()
     {
         cc = GetComponent<CharacterController>();
         playerStats = GetComponent<PlayerStats>();
     }
+    void Update()
+    {
+        SimulateGravity();
+    }
 
     public void Move(Vector3 direction)
     {
+        if (isAttacking) return;
         if (direction == Vector3.zero)
         {
-            animationStateChanger.ChangeState("Breathing Idle",1f);
+            animationStateChanger.ChangeState("Breathing Idle", 1f);
             return;
         }
         if (isSprinting && playerStats.currentStamina > 0)
@@ -51,19 +57,22 @@ public class User : MonoBehaviour
             currentGravity = new Vector3(0, -1, 0);
         }
     }
-    public void Attack(Vector3 direction)
+    public void Attack(Vector3 direction, Transform cameraTransform)
     {
-        if (playerStats.currentStamina <= 0)
+        if (playerStats.currentStamina <= 0 || isAttacking || playerStats.currentStamina < playerStats.currentDamage)
         {
             return;
         }
+        isAttacking = true;
         playerStats.SpendStamina(playerStats.currentDamage);
-        Vector3 origin = transform.position;
+        Vector3 origin = cameraTransform.position;
+
         Debug.DrawRay(origin, direction * 3f, Color.red, 4f);
-
-
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, 3f)) 
+        animationStateChanger.ChangeState("Stable Sword Outward Slash", 1f);
+        playerStats.PlaySFX(playerStats.attackSound);
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, 3f))
         {
+
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (enemy != null)
             {
@@ -75,16 +84,22 @@ public class User : MonoBehaviour
         {
             playerStats.SpendStamina(sprintCost * Time.deltaTime);
         }
+         Invoke(nameof(EndAttack), 1.0f);
 
     }
-    // Update is called once per frame
-    void Update()
+    public void EndAttack()
     {
-        SimulateGravity();
+        isAttacking = false;
     }
 
      public void EquipWeapon(WeaponSO weaponSO)
     {
+        if (currentWeapon != null)
+        {
+            Debug.Log("Unequipping current weapon: " + currentWeapon.weaponSO.name);
+            UnequipWeapon();
+        }
+
         Debug.Log("Equipping weapon: " + weaponSO.name);
         if (weaponSO == null)
         {

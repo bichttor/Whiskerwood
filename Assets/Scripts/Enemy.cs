@@ -16,11 +16,13 @@ public class Enemy : MonoBehaviour
     bool alreadyAttacked;
     public float sightRange, attackRange;
     public bool playerInSight, playerInAttack;
+    public AnimationStateChanger animationStateChanger;
+    public AudioSource audioSource;
     void Start()
     {
         player = GameObject.Find("User").transform;
         agent = GetComponent<NavMeshAgent>();
-        setBottleCaps();
+        setParameters();
     }
 
     // Update is called once per frame
@@ -41,19 +43,22 @@ public class Enemy : MonoBehaviour
             Attacking();
         }
     }
-    public void setBottleCaps()
+    public void setParameters()
     {
         bottlecaps = (int)Random.Range(damage, health);
+        experience = (int)Random.Range(damage, health);
     }
     public void Patroling()
     {
         if (!walkPointSet)
         {
+            animationStateChanger.ChangeState("Breathing Idle", 1f);
             SearchWalkPoint();
         }
         if (walkPointSet)
         {
             agent.SetDestination(walkPoint);
+            animationStateChanger.ChangeState("Walking", 1f);
         }
         Vector3 distanceToPoint = transform.position - walkPoint;
         if (distanceToPoint.magnitude < 1f)
@@ -73,9 +78,10 @@ public class Enemy : MonoBehaviour
             walkPointSet = true;
         }
     }
-     public void Chasing()
+    public void Chasing()
     {
         agent.SetDestination(player.position);
+        animationStateChanger.ChangeState("Running", 1f);
     }
     public void Attacking()
     {
@@ -84,19 +90,31 @@ public class Enemy : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            Ray ray = new Ray(transform.position + Vector3.up * 1.5f, (player.position - transform.position).normalized);
+            if (Physics.Raycast(ray, out RaycastHit hit, attackRange, playerMask))
+            {
+                animationStateChanger.ChangeState("Stable Sword Outward Slash", 1f);
+                if (hit.collider.CompareTag("Player"))
+                {
+                    GameEventsManager.Instance.TriggerPlayerDamaged(damage);
+                    Debug.DrawRay(ray.origin, ray.direction * attackRange, Color.red, 1f);
+                    Debug.Log("Enemy hit player with ray attack");
+                }
+            }
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
     public void ResetAttack()
     {
+        animationStateChanger.ChangeState("Breathing Idle", 1f);
         alreadyAttacked = false;
     }
     public void TakeDamage(float damage)
     {
         Debug.Log($"[Enemy] Taking damage: {damage}");
         health -= damage;
-        //GetComponent<AudioSource>().Play();
+        
         if (health <= 0)
         {
             Die();
@@ -105,19 +123,11 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         Debug.Log($"[Enemy] Died");
-        //logic for dying
+        audioSource.Play();
         GameEventsManager.Instance.TriggerEnemyKilled(experience, bottlecaps);
         Destroy(gameObject);
 
     }
 
-    //simple collide attack for testing
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-             GameEventsManager.Instance.TriggerPlayerDamaged(damage);
-        }
-    }
 
 }

@@ -31,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 2300706457803097074, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 91e1b526de4a21b48b74bab8e9ad455d, type: 2}
+      objectReference: {fileID: 9100000, guid: c2d851c7b4beeb64e88ea389c414361d, type: 2}
     - target: {fileID: 5289856376409997912, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
       propertyPath: m_Name
       value: NPC Variant

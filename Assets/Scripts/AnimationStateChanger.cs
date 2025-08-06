@@ -12,7 +12,7 @@ public class AnimationStateChanger : MonoBehaviour
         {
             return;
         }
-        animator.CrossFade(newState, .2f);
+        animator.CrossFade(newState, .1f);
         currentState = newState;
     }
 }
