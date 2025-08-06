@@ -13,6 +13,7 @@ public class User : MonoBehaviour
     public PlayerStats playerStats;
     public Weapon currentWeapon;
     public Transform weaponHoldPoint;
+    public AnimationStateChanger animationStateChanger;
  
     void Start()
     {
@@ -24,15 +25,18 @@ public class User : MonoBehaviour
     {
         if (direction == Vector3.zero)
         {
+            animationStateChanger.ChangeState("Breathing Idle",1f);
             return;
         }
         if (isSprinting && playerStats.currentStamina > 0)
         {
             cc.Move(direction * (speed * 1.4f) * Time.deltaTime);
             playerStats.SpendStamina(sprintCost * Time.deltaTime);
+            animationStateChanger.ChangeState("Running", 1f);
         }
         else
         {
+            animationStateChanger.ChangeState("Walking", 1f);
             cc.Move(direction * speed * Time.deltaTime);
         }
     }
@@ -81,21 +85,24 @@ public class User : MonoBehaviour
 
      public void EquipWeapon(WeaponSO weaponSO)
     {
-        if(weaponSO == null)
+        Debug.Log("Equipping weapon: " + weaponSO.name);
+        if (weaponSO == null)
         {
             Debug.LogError("WeaponSO is null. Cannot equip weapon.");
             return;
         }
         if (weaponSO != null)
         {
+            Debug.Log("WeaponSO is not null. Proceeding to equip weapon.");
             GameObject weaponInstance = Instantiate(weaponSO.worldPrefab);
             Weapon weapon = weaponInstance.GetComponent<Weapon>();
             weapon.weaponSO = weaponSO;
             currentWeapon = weapon;
-
             Transform gripPoint = currentWeapon.transform.Find("GripPoint");
+        
             currentWeapon.transform.SetParent(weaponHoldPoint);
-            currentWeapon.transform.localPosition = -gripPoint.localPosition;
+
+             currentWeapon.transform.localPosition = -gripPoint.localPosition;
             currentWeapon.transform.localRotation = Quaternion.Inverse(gripPoint.localRotation);
 
             if (currentWeapon.TryGetComponent<Collider>(out var col))

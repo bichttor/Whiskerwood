@@ -11,7 +11,8 @@ public class UseInputHandler : MonoBehaviour
     public InventoryManager inventoryManager;
     public CameraTilt cameraTilt;
     float pitch = 0f; 
-    float yaw = 0f;  
+    float yaw = 0f;
+    float mouseSensitivity = 3.5f;  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,13 +53,14 @@ public class UseInputHandler : MonoBehaviour
         Vector3 cameraAdjustedMovement = moveForward + moveSide;
         cameraAdjustedMovement.y = 0;
         user.Move(cameraAdjustedMovement);
-        float mouseX = Input.GetAxis("Mouse X") * 100 * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * 100 * Time.deltaTime;
-        yaw += mouseX;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity ;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity ;
         pitch -= mouseY;
         pitch = Mathf.Clamp(pitch, -85f, 85f);
-        user.transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+        user.transform.rotation *= Quaternion.Euler(0f, mouseX, 0f); // smooth rotation
+        cameraTransform.localRotation = Quaternion.Euler(pitch, 0f, 0f); // camera tilt
 
+        
         //Attack
         if (Input.GetMouseButtonDown(0))
         {
@@ -68,9 +70,9 @@ public class UseInputHandler : MonoBehaviour
         //Pick up item
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, 2f, layerMask))
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, 3f, layerMask))
             {
-
+                Debug.DrawRay(cameraTransform.position, cameraTransform.forward * 3f, Color.red, 4f);
                 IInteractable interactable = raycastHit.transform.GetComponent<IInteractable>();
                 if (interactable != null)
                 {
