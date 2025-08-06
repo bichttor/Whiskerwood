@@ -17,8 +17,8 @@ MonoBehaviour:
     done.
   statToChange: 0
   amountToChageStat: 0
-  quantity: 0
-  bottlecapsPrice: 0
+  quantity: 1
+  bottlecapsPrice: 23
   worldPrefab: {fileID: 4756212165269144936, guid: a061dd334cf180b418709f0bc3b4ba13, type: 3}
   sprite: {fileID: 21300000, guid: 06140cc248b05d2488fbb6493ce5fd11, type: 3}
   damage: 12

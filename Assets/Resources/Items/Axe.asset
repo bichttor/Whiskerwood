@@ -16,8 +16,8 @@ MonoBehaviour:
   itemDescription: Cutting Trees isn't the only use for this tool.
   statToChange: 0
   amountToChageStat: 0
-  quantity: 0
-  bottlecapsPrice: 0
+  quantity: 1
+  bottlecapsPrice: 30
   worldPrefab: {fileID: 478953066251206768, guid: 1ec3a955a6b39004fb41adf8a85ec686, type: 3}
   sprite: {fileID: 21300000, guid: 8708d80070522a043a1ab6a2b2775382, type: 3}
   damage: 20

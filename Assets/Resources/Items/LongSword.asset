@@ -17,8 +17,8 @@ MonoBehaviour:
     Its long blade gives an unfair advantage to those who wield it.
   statToChange: 0
   amountToChageStat: 0
-  quantity: 0
-  bottlecapsPrice: 0
+  quantity: 1
+  bottlecapsPrice: 43
   worldPrefab: {fileID: 4505344712680032473, guid: 94cfb876522fffc4797cc81423b95c18, type: 3}
   sprite: {fileID: 21300000, guid: b2f3327f47464544293b6b9018e1296e, type: 3}
   damage: 25

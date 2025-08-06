@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4605216032384287379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4911881498129857286}
+  m_Layer: 3
+  m_Name: HoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4911881498129857286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4605216032384287379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6927374732831000210}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3879206126584467160
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5289856376409997912, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_Name
+      value: User Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726588791380062617, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6726588791380062617, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 73.34552
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 68.919426
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99965096
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.026419936
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 3.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 6770915487636647949, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -5829581066737082805, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6194507733438203978, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4911881498129857286}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5289856376409997912, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3898554871202513609}
+    - targetCorrespondingSourceObject: {fileID: 5289856376409997912, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8749477708995555396}
+  m_SourcePrefab: {fileID: 100100000, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+--- !u!4 &6927374732831000210 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6194507733438203978, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+  m_PrefabInstance: {fileID: 3879206126584467160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8988319762397711488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5289856376409997912, guid: 885f84cff93c04c4a87f33457bef17c0, type: 3}
+  m_PrefabInstance: {fileID: 3879206126584467160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3898554871202513609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8988319762397711488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8982588936cda4542b97fa8a606d2dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cc: {fileID: 0}
+  gravity: -9.81
+  currentGravity: {x: 0, y: 0, z: 0}
+  isSprinting: 0
+  playerStats: {fileID: 0}
+  currentWeapon: {fileID: 0}
+  weaponHoldPoint: {fileID: 0}
+  animationStateChanger: {fileID: 0}
+--- !u!114 &-8749477708995555396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8988319762397711488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0ef964d4bc86ca4288f27968a2c320a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  healthBar: {fileID: 0}
+  staminaBar: {fileID: 0}
+  experienceBar: {fileID: 0}
+  hud: {fileID: 0}
+  currentStamina: 0
+  maxStamina: 100
+  damage: 5
+  currentDamage: 5
+  currentLevel: 1
+  currentExperience: 0
+  nextLevelsExperience: 200
+  isRecharging: 0
+  chargeRate: 30
+  audioSource: {fileID: 0}
+  takeDamageSound: {fileID: 0}
+  levelUpSound: {fileID: 0}
+  BottleCaps: 0

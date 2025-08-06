@@ -127,6 +127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8728624147566369590}
   - component: {fileID: 7120179808954637254}
+  - component: {fileID: -7468212450017337407}
   m_Layer: 0
   m_Name: spear
   m_TagString: Untagged
@@ -167,6 +168,27 @@ MonoBehaviour:
   inventoryManager: {fileID: 0}
   weaponSO: {fileID: 11400000, guid: 8dbd9ff5226f9b140a2ffa1da2745d61, type: 2}
   quantity: 1
+--- !u!65 &-7468212450017337407
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391487248970600166}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6559698064325259493
 GameObject:
   m_ObjectHideFlags: 0

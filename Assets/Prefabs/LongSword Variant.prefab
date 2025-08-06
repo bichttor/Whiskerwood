@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 33b7352d6fd92c245af172abffad059f, type: 2}
+    - target: {fileID: 254093707651741845, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 254093707651741845, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 254093707651741845, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
+      propertyPath: m_Size.z
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 1388328570094615198, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
       propertyPath: m_Name
       value: LongSword Variant
@@ -38,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3801561423023182703, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72.78973
+      value: 72.766106
       objectReference: {fileID: 0}
     - target: {fileID: 3801561423023182703, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000019073486
+      value: 0.526
       objectReference: {fileID: 0}
     - target: {fileID: 3801561423023182703, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 64.78433
+      value: 70.714
       objectReference: {fileID: 0}
     - target: {fileID: 3801561423023182703, guid: 0fa461b847c85d446a7e539b92e0c29e, type: 3}
       propertyPath: m_LocalRotation.w
