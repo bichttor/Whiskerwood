@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0af3de00d2e409d4ea5932cccbad500b, type: 3}
-  m_Name: KillEnemyQuest
+  m_Name: CollectCatnipQuest
   m_EditorClassIdentifier: 
-  id: KillEnemyQuest
-  displayName: Kill Enemy Quest
-  levelRequirement: 1
+  id: CollectCatnipQuest
+  displayName: CollectCatnipQuest
+  levelRequirement: 0
   questPrerequisites: []
   questSteps:
-  - {fileID: 1940390730952212787, guid: 28c1874c2e297224dba7751533651b57, type: 3}
-  experienceReward: 50
-  bottleCapsReward: 40
+  - {fileID: 2023716626482207421, guid: 3b3caa6e5ca50ec4a809ae3c56239609, type: 3}
+  experienceReward: 30
+  bottleCapsReward: 50

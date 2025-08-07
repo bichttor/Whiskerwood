@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
         Debug.Log($"[Enemy] Died");
         audioSource.Play();
         GameEventsManager.Instance.TriggerEnemyKilled(experience, bottlecaps);
-        Destroy(gameObject);
+        Destroy(gameObject, audioSource.clip.length - 0.2f);
 
     }
 

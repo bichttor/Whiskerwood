@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 public class DialogueManager : MonoBehaviour
 {
+    public MonoBehaviour cameraLookScript;
     public GameObject DialogueMenu;
     public TMP_Text dialogueText, nameText;
     public Queue<string> sentences;
@@ -28,7 +29,8 @@ public class DialogueManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
+        if (cameraLookScript != null)
+            cameraLookScript.enabled = false;
         nameText.text = dialogue.name;
         Debug.Log("Starting dialogue with " + dialogue.name);
         sentences.Clear();
@@ -57,6 +59,8 @@ public class DialogueManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        if (cameraLookScript != null)
+            cameraLookScript.enabled = true;
       
     }
 

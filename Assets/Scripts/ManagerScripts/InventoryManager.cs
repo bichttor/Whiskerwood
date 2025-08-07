@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public MonoBehaviour cameraLookScript;
     public GameObject InventoryMenu;
     public ItemSlot selectedSlot;
     public bool menuOn;
@@ -20,6 +21,8 @@ public class InventoryManager : MonoBehaviour
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                if (cameraLookScript != null)
+                    cameraLookScript.enabled = true;
             }
         }
         if (Input.GetKeyDown(KeyCode.I))
@@ -31,6 +34,8 @@ public class InventoryManager : MonoBehaviour
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                if (cameraLookScript != null)
+                    cameraLookScript.enabled = true;
             }
             else
             {
@@ -39,6 +44,8 @@ public class InventoryManager : MonoBehaviour
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
+                if (cameraLookScript != null)
+                    cameraLookScript.enabled = false;
             }
         }
       

@@ -73,7 +73,8 @@ public class PlayerStats : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            //dead
+            //restart scene
+            
             Debug.Log("DEAD");
         }
         PlaySFX(takeDamageSound);
@@ -160,6 +161,10 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth; // Restore health on level up
         currentStamina = maxStamina; // Restore stamina on level up
         hud.SetLevel(currentLevel);
+        hud.healthBar.SetSliderMax(maxHealth);
+        hud.healthBar.SetSlider(currentHealth);
+        hud.staminaBar.SetSliderMax(maxStamina);
+        hud.staminaBar.SetSlider(currentStamina);
         hud.experienceBar.SetSliderMax(nextLevelsExperience);
         hud.experienceBar.SetSlider(currentExperience);
     }

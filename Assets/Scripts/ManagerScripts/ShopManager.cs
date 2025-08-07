@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 public class ShopManager : MonoBehaviour
 {
+    public MonoBehaviour cameraLookScript;
     public ShopItemSlot[] itemSlots;
     public InventoryManager inventory;
     public bool menuOn = false;
@@ -23,6 +24,8 @@ public class ShopManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if (cameraLookScript != null)
+            cameraLookScript.enabled = false;
         for (int i = 0; i < itemSlots.Length; i++)
         {
             if (i < itemsForSale.Length)
@@ -42,6 +45,8 @@ public class ShopManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        if (cameraLookScript != null)
+            cameraLookScript.enabled = true;
     }
     public void BuyItem(ItemSO item)
     {
